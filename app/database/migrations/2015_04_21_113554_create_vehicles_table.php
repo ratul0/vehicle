@@ -18,10 +18,14 @@ class CreateVehiclesTable extends Migration {
 			$table->string('make');
 			$table->string('model');
 			$table->string('year');
+			$table->integer('seller_id')->unsigned();
+			$table->dateTime('public_at')->nullable();
+			$table->string('state_status')->default('ENABLED');
+			$table->foreign('seller_id')->references('id')->on('accounts')->onUpdate('cascade')->onDelete('cascade');
 			/*$table->string('seller_email_temp')->nullable();
 			$table->string('vin');
 			$table->string('sid');
-			$table->integer('seller_id')->nullable();
+
 			$table->integer('created_id');
 			$table->integer('updated_by')->nullable();
 			$table->string('state_stage');
@@ -33,10 +37,10 @@ class CreateVehiclesTable extends Migration {
 			$table->integer('spec_trans')->nullable();
 			$table->integer('spec_num_cylinders')->nullable();
 			$table->string('negotiable_ind')->nullable();
-			$table->dateTime('public_at')->nullable();
+
 			$table->integer('num_views')->nullable();
 			$table->string('cert_badge_1')->nullable();
-			$table->string('state_status')->default('ENABLED');*/
+			*/
 
 			$table->timestamps();
 		});

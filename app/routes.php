@@ -9,9 +9,25 @@ Route::get('vehicle', ['as' => 'vehicle.search', 'uses' => 'VehiclesController@s
 Route::post('vehicle', ['as' => 'vehicle.doSearch', 'uses' => 'VehiclesController@doSearch']);
 
 Route::get('api/dropdown', function(){
-	$input = Input::get('option');
+	$input = Input::get('id');
 
-	$maker = Vehicle::where('id',$input)->lists('id','model');
-	//dd($maker);
+	$make = Vehicle::where('id',$input)->first()->make;
+
+
+	$maker = Vehicle::where('make',$make)->lists('id','model');
+
+
 	return Response::json($maker);
+});
+
+Route::get('test',function(){
+	return DB::table('vehicles')
+				->join('accounts', 'vehicles.seller_id', '=', 'accounts.id')
+//				->where('vehicles.make','=','Mercedes-Benz')
+//				->where('vehicles.model','=','V1')
+				->where('vehicles.STATE_STATUS','=','ENABLED')
+				->where('accounts.STATE_STATUS','=','ENABLED')
+				->select('vehicles.make', 'vehicles.model', 'vehicles.year')
+				->get();
+
 });

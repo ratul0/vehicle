@@ -1,5 +1,9 @@
+@extends('layouts.default')
+
+@section('content')
 <div>
-    @if(count($vehicles))
+
+        {{cars}}
         <table border="1">
             <thead>
             <tr>
@@ -11,19 +15,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($vehicles as $vehicle)
+
                 <tr>
-                    <td>{{ $vehicle->make}}</td>
-                    <td>{{ $vehicle->model}}</td>
-                    <td>{{ $vehicle->year}}</td>
+
+
 
                 </tr>
-            @endforeach
+
             </tbody>
         </table>
-    @else
+
         No Data Found
-    @endif
 </div>
 
-<a href="{{route('vehicle.index')}}">Search Again</a>
+@stop
