@@ -3,6 +3,6 @@
 class Vehicle extends \Eloquent {
 
 	protected $guarded = ['id'];
-	protected $table = 'vehicles';
+	protected $table = 'vehicle';
 
 }

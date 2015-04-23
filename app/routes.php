@@ -21,13 +21,13 @@ Route::get('api/dropdown', function(){
 });
 
 Route::get('test',function(){
-	return DB::table('vehicles')
-				->join('accounts', 'vehicles.seller_id', '=', 'accounts.id')
-//				->where('vehicles.make','=','Mercedes-Benz')
-//				->where('vehicles.model','=','V1')
-				->where('vehicles.STATE_STATUS','=','ENABLED')
+	return DB::table('vehicle')
+				->join('accounts', 'vehicle.seller_id', '=', 'accounts.id')
+//				->where('vehicle.make','=','Mercedes-Benz')
+//				->where('vehicle.model','=','V1')
+				->where('vehicle.STATE_STATUS','=','ENABLED')
 				->where('accounts.STATE_STATUS','=','ENABLED')
-				->select('vehicles.make', 'vehicles.model', 'vehicles.year')
+				->select('vehicle.make', 'vehicle.model', 'vehicle.year')
 				->get();
 
 });
